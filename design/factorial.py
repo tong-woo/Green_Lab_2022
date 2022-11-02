@@ -2,7 +2,7 @@ import csv, random, numpy
 from collections import defaultdict
 from itertools import product
 
-Browsers = ["Chrome", "Firefox", "Edge"]
+Browsers = ["Chrome", "Firefox", "Opera"]
 PP = ["None", "Standard", "Strict"]
 experiment = {}
 
@@ -24,11 +24,8 @@ def read_and_shuffle(file):
     return top27
 
 
-
 if __name__ == "__main__":
-    top27 = read_and_shuffle("tranco-list.csv")
-    l = list(numpy.array_split(top27, 9))
     keylist = list(product(Browsers, PP))
     for i in range(9):
-        experiment[keylist[i]] = l[i]
+        experiment[keylist[i]] = read_and_shuffle("tranco-list.csv")
     print(experiment)
